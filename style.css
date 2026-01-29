@@ -1,3 +1,5 @@
+<style>
+
 /* Change the background of the entire visible page */
 body {
     background-color: #FF7F7F ; /* Very light red */
@@ -72,3 +74,17 @@ h1 {
     padding: 5px 10px;
     border-radius: 15px;
 }
+.invincibles-link {
+  color: #ff0000; /* Red color */
+  text-decoration: none; /* Removes underline */
+  font-weight: bold;
+  padding: 5px;
+  border-bottom: 2px solid #ff0000;
+  transition: all 0.3s ease;
+}
+
+.invincibles-link:hover {
+  background-color: #ff0000;
+  color: white; /* Inverts colors on hover */
+}
+</style>
