@@ -1,29 +1,28 @@
 <style>
-
-/* Change the background of the entire visible page */
+/* General body styles for the entire visible page */
 body {
-    background-color: #FF7F7F ; /* Very light red */
+    background-color: #FF7F7F; /* Very light red fallback */
+    font-family: 'Arial', sans-serif;
+    /* The display and justification settings below assume you are wrapping content in a .container div */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
 /* Style for all paragraphs */
 p {
-    color:lightgrey;
+    color: lightgrey; /* Note: lightgrey text might be hard to read on a light red background */
     font-size: 30px;
     font-family: 'Times New Roman', serif;
 }
 
-/* Style for the main heading */
+/* Style for main headings (merged with the specific h1 styles below) */
 h1 {
     text-align: center; /* Puts the heading in the middle */
-    border: 2px solid black; /* Adds an orange border around the heading */
+    border: 2px solid black; /* Adds a black border around the heading */
     padding: 10px; /* Adds space inside the border */
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+    color: #db0007; /* Arsenal Red */
+    font-size: 24px;
 }
 
 .container {
@@ -33,12 +32,6 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 500px;
-}
-
-h1 {
-    text-align: center;
-    color: #db0007; /* Arsenal Red */
-    font-size: 24px;
 }
 
 .player-list {
@@ -74,6 +67,7 @@ h1 {
     padding: 5px 10px;
     border-radius: 15px;
 }
+
 .invincibles-link {
   color: #ff0000; /* Red color */
   text-decoration: none; /* Removes underline */
