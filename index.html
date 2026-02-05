@@ -1,178 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arsenal F.C. Fan Page</title>
-    
-    <!-- Combined CSS styles from the previous interaction -->
-    <style>
-        /* General body styles */
-        body {
-            background-color: #f4f4f4; /* A neutral background color */
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            padding: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsenal FC Fan Page</title>
 
-        /* Style for all paragraphs */
-        p {
-            color: #555;
-            font-size: 16px;
-            font-family: 'Times New Roman', serif;
-            margin-bottom: 15px;
-        }
+<style>
+html { scroll-behavior: smooth; }
 
-        /* Style for main headings */
-        h1 {
-            text-align: center;
-            color: #db0007; /* Arsenal Red */
-            font-size: 28px;
-            border-bottom: 2px solid #db0007;
-            padding-bottom: 10px;
-            margin-top: 20px;
-        }
+body {
+    margin: 0;
+    background: #f4f6f8;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #222;
+}
 
-        h2 {
-            color: #DB0007;
-            border-top: 2px solid #eee;
-            padding-top: 20px;
-        }
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(to right, #db0007, #8b0004);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
 
-        img {
-            max-width: 100%; /* Makes images responsive */
-            height: auto;
-            border-radius: 8px;
-            margin: 15px 0;
-            display: block;
-        }
+header h1 {
+    margin: 0;
+    font-size: 40px;
+}
 
-        /* Styles for the Player Ratings section */
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 500px;
-            margin: 20px auto;
-        }
+/* ===== NAV ===== */
+nav {
+    background: #111;
+    padding: 12px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
 
-        .player-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
 
-        .player-card {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-left: 5px solid #db0007;
-            border-radius: 4px;
-            transition: transform 0.2s;
-        }
+nav a:hover {
+    color: #db0007;
+}
 
-        .player-card:hover {
-            transform: translateX(5px);
-            background-color: #eee;
-        }
+/* ===== SECTIONS ===== */
+section {
+    max-width: 900px;
+    margin: auto;
+    padding: 50px 20px;
+}
 
-        .player-name {
-            font-weight: bold;
-            color: #333;
-        }
+section h2 {
+    color: #db0007;
+    border-bottom: 3px solid #db0007;
+    padding-bottom: 10px;
+}
 
-        .player-rating {
-            font-weight: bold;
-            color: #007bff;
-            background-color: #e0f0ff;
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
+/* ===== IMAGES ===== */
+img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 20px auto;
+    display: block;
+}
 
-        /* Styles for the Best Years section */
-        ul { list-style-type: square; }
-        li { margin-bottom: 10px; }
-        .year { font-weight: bold; color: #333; }
-        .description { color: #555; }
-    </style>
+/* ===== PLAYER CARDS ===== */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+.player-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 15px;
+}
+
+.player-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-left: 6px solid #db0007;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.player-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+.player-rating {
+    background: #e0f0ff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* ===== YEARS ===== */
+ul {
+    list-style: square;
+}
+
+li {
+    margin: 12px 0;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+</style>
 </head>
+
 <body>
 
-    <h1><em>Why I support Arsenal FC</em></h1> 
+<header>
+    <h1>Why I Support Arsenal FC ⚽</h1>
+    <p>The Pride of North London</p>
+</header>
 
-    <!-- Section: Club History and Intro -->
-    <div>
-        <p>
-            <em>Arsenal Football Club is a historic English professional football club from North London, founded in 1886 by munitions workers, known as "The Gunners".</em>
-        </p>
-    </div>
+<nav>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+    <a href="#player">Best Player</a>
+    <a href="#ratings">Ratings</a>
+    <a href="#years">Best Years</a>
+</nav>
 
-    <!-- Section: Current Team Analysis -->
-    <h1>THE BEST TEAM OF ALL TIME, ARSENAL FOOTBALL CLUB!</h1>
-    
-    <img src="arsenal.jpg" alt="Arsenal team photo" width="250">
+<section id="about">
+    <h2>About Arsenal</h2>
+    <p>
+        Arsenal Football Club is a historic English club from North London founded in 1886. 
+        Known as <strong>The Gunners</strong>, Arsenal are famous for attacking football, loyal fans, 
+        and legendary players.
+    </p>
+</section>
 
-    <p>Elite Defense: Arsenal boasts the league's best defensive record, with 11 clean sheets and just 0.6 goals conceded per match. The central defensive partnership of William Saliba and Gabriel Magalhães, along with the goalkeeping of David Raya, forms a formidable backline. Set-Piece Mastery: The team is widely regarded as world-class at set pieces, a significant source of goals and a crucial Plan B against teams that sit in a low defensive block. This is a result of meticulous coaching from specialist Nicolas Jover and players' willingness to attack the ball. Tactical Flexibility: Arteta has developed a tactically fluid team capable of seamlessly transitioning between systems (e.g., 4-3-3, 3-2-5 in possession) to adapt to different opponents. They are comfortable in high pressing, mid-blocks, or low blocks, relying on player intelligence and discipline to maintain defensive solidity. Talented Youth & Star Players: The squad is one of the youngest in the Premier League and features key players like Declan Rice, Bukayo Saka, and Martin Ødegaard, all of whom are considered among the most valuable in the league. Winning Mentality: Recent performances, including a convincing 3-1 Champions League win at Inter Milan on January 20, 2026, demonstrate a growing maturity, intelligence, and a strong winning mentality needed to compete for major trophies.</p>
+<section id="team">
+    <h2>The Best Team of All Time</h2>
+    <img src="arsenal.jpg" alt="Arsenal Team">
+    <p><strong>Elite Defense:</strong> Saliba and Gabriel form one of the best partnerships in Europe.</p>
+    <p><strong>Set Pieces:</strong> Arsenal are dangerous from corners and free kicks.</p>
+    <p><strong>Tactics:</strong> Arteta adapts systems for every opponent.</p>
+    <p><strong>Youth:</strong> Saka, Rice and Ødegaard lead the future.</p>
+</section>
 
-    <!-- Section: Best Player -->
-    <h2>BEST PLAYER OF ALL TIME: THIERRY HENRY</h2>
-    <p>Thierry Henry at Arsenal was a transformative French striker, renowned for his lethal pace.</p>
-    
-    <img src="henry.jpg" alt="Thierry Henry photo" width="250">
+<section id="player">
+    <h2>Best Player Ever – Thierry Henry</h2>
+    <img src="henry.jpg" alt="Thierry Henry">
+    <p>
+        Thierry Henry is Arsenal’s greatest ever player. His pace, skill, finishing and leadership 
+        made him a legend at the club and one of the best strikers in football history.
+    </p>
+</section>
 
-    <!-- Section: Player Ratings List -->
+<section id="ratings">
+    <h2>Top Player Ratings</h2>
     <div class="container">
-        <h1>Arsenal Top Player Ratings (24/25)</h1>
         <div class="player-list">
-            <div class="player-card">
-                <span class="player-name">Bukayo Saka</span>
-                <span class="player-rating">7.45</span>
-            </div>
-            <div class="player-card">
-                <span class="player-name">Thomas Partey</span>
-                <span class="player-rating">7.38</span>
-            </div>
-            <div class="player-card">
-                <span class="player-name">Declan Rice</span>
-                <span class="player-rating">7.34</span>
-            </div>
-            <div class="player-card">
-                <span class="player-name">Martin Ødegaard</span>
-                <span class="player-rating">7.23</span>
-            </div>
-            <div class="player-card">
-                <span class="player-name">David Raya</span>
-                <span class="player-rating">7.21</span>
-            </div>
-            <div class="player-card">
-                <span class="player-name">Gabriel Magalhães</span>
-                <span class="player-rating">7.21</span>
-            </div>
+            <div class="player-card"><span>Saka</span><span class="player-rating">7.45</span></div>
+            <div class="player-card"><span>Partey</span><span class="player-rating">7.38</span></div>
+            <div class="player-card"><span>Rice</span><span class="player-rating">7.34</span></div>
+            <div class="player-card"><span>Ødegaard</span><span class="player-rating">7.23</span></div>
+            <div class="player-card"><span>Raya</span><span class="player-rating">7.21</span></div>
+            <div class="player-card"><span>Gabriel</span><span class="player-rating">7.21</span></div>
         </div>
     </div>
+</section>
 
-    <!-- Section: Best Years List -->
-    <h2>Arsenal's Best Years</h2>
-    
+<section id="years">
+    <h2>Best Years</h2>
     <ul>
-        <li>
-            <span class="year">2003–04:</span> 
-            <span class="description">The Invincibles – Premier League winners without a single defeat.</span>
-        </li>
-        <li>
-            <span class="year">1997–98:</span> 
-            <span class="description">First Double under Arsene Wenger (Premier League & FA Cup).</span>
-        </li>
-        <li>
-            <span class="year">2001–02:</span> 
-            <span class="description">Second Double (Premier League & FA Cup).</span>
-        </li>
+        <li><strong>2003–04:</strong> The Invincibles season.</li>
+        <li><strong>1997–98:</strong> First Double under Wenger.</li>
+        <li><strong>2001–02:</strong> Second Double season.</li>
     </ul>
+</section>
+
+<footer>
+    <p>Made by Adib — Arsenal Fan Page ❤️⚽</p>
+</footer>
 
 </body>
 </html>
-
