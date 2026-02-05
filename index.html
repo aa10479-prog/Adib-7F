@@ -19,13 +19,13 @@ body {
 header {
     background: linear-gradient(to right, #db0007, #8b0004);
     color: white;
-    padding: 50px 20px;
+    padding: 60px 20px;
     text-align: center;
 }
 
 header h1 {
     margin: 0;
-    font-size: 40px;
+    font-size: 42px;
 }
 
 /* ===== NAV ===== */
@@ -35,6 +35,7 @@ nav {
     text-align: center;
     position: sticky;
     top: 0;
+    z-index: 10;
 }
 
 nav a {
@@ -48,11 +49,19 @@ nav a:hover {
     color: #db0007;
 }
 
+nav button {
+    margin-left: 20px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 /* ===== SECTIONS ===== */
 section {
     max-width: 900px;
     margin: auto;
-    padding: 50px 20px;
+    padding: 60px 20px;
 }
 
 section h2 {
@@ -64,8 +73,8 @@ section h2 {
 /* ===== IMAGES ===== */
 img {
     max-width: 100%;
-    border-radius: 12px;
-    margin: 20px auto;
+    border-radius: 14px;
+    margin: 25px auto;
     display: block;
 }
 
@@ -73,7 +82,7 @@ img {
 .container {
     background: white;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0,0,0,.15);
 }
 
@@ -87,7 +96,7 @@ img {
     background: #f9f9f9;
     padding: 15px;
     border-left: 6px solid #db0007;
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     transition: transform .3s, box-shadow .3s;
@@ -105,13 +114,31 @@ img {
     font-weight: bold;
 }
 
-/* ===== YEARS ===== */
-ul {
-    list-style: square;
+/* ===== SEARCH ===== */
+#searchPlayer {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
-li {
-    margin: 12px 0;
+/* ===== VIDEO ===== */
+.video-box {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+.video-box iframe {
+    position: absolute;
+    top:0;left:0;
+    width:100%;
+    height:100%;
 }
 
 /* ===== FOOTER ===== */
@@ -119,7 +146,39 @@ footer {
     background: #111;
     color: white;
     text-align: center;
-    padding: 25px;
+    padding: 30px;
+}
+
+/* ===== ANIMATION ===== */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .8s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== DARK MODE ===== */
+.dark {
+    background: #111;
+    color: #eee;
+}
+
+.dark nav,
+.dark footer {
+    background: #000;
+}
+
+.dark .container {
+    background: #1e1e1e;
+}
+
+.dark .player-card {
+    background: #2a2a2a;
+    border-left-color: #ff3b3b;
 }
 </style>
 </head>
@@ -137,14 +196,16 @@ footer {
     <a href="#player">Best Player</a>
     <a href="#ratings">Ratings</a>
     <a href="#years">Best Years</a>
+    <a href="#video">Video</a>
+    <button id="toggleMode">🌙 Dark</button>
 </nav>
 
 <section id="about">
     <h2>About Arsenal</h2>
     <p>
-        Arsenal Football Club is a historic English club from North London founded in 1886. 
-        Known as <strong>The Gunners</strong>, Arsenal are famous for attacking football, loyal fans, 
-        and legendary players.
+        Arsenal Football Club is a historic English club founded in 1886. 
+        Known as <strong>The Gunners</strong>, Arsenal are famous for attacking football, 
+        loyal fans, and legendary players.
     </p>
 </section>
 
@@ -168,6 +229,7 @@ footer {
 
 <section id="ratings">
     <h2>Top Player Ratings</h2>
+    <input type="text" id="searchPlayer" placeholder="Search player...">
     <div class="container">
         <div class="player-list">
             <div class="player-card"><span>Saka</span><span class="player-rating">7.45</span></div>
@@ -189,9 +251,46 @@ footer {
     </ul>
 </section>
 
+<section id="video">
+    <h2>Invincibles Highlights 🎥</h2>
+    <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/6oR6jX3G9pE"
+        title="Arsenal Invincibles"
+        frameborder="0"
+        allowfullscreen></iframe>
+    </div>
+</section>
+
 <footer>
     <p>Made by Adib — Arsenal Fan Page ❤️⚽</p>
 </footer>
+
+<script>
+/* Dark Mode */
+document.getElementById("toggleMode").onclick = () => {
+    document.body.classList.toggle("dark");
+};
+
+/* Player Search */
+document.getElementById("searchPlayer").addEventListener("keyup", function () {
+    let filter = this.value.toLowerCase();
+    document.querySelectorAll(".player-card").forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(filter) ? "flex" : "none";
+    });
+});
+
+/* Fade Animation */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+    });
+});
+
+document.querySelectorAll("section").forEach(sec => {
+    sec.classList.add("fade");
+    observer.observe(sec);
+});
+</script>
 
 </body>
 </html>
