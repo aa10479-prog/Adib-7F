@@ -19,19 +19,37 @@ body {
 header {
     background: linear-gradient(to right, #db0007, #8b0004);
     color: white;
-    padding: 60px 20px;
+    padding: 90px 20px;
     text-align: center;
+    animation: slideDown 1s ease;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 42px;
+@keyframes slideDown {
+    from { opacity:0; transform: translateY(-40px); }
+    to { opacity:1; transform: translateY(0); }
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 34px;
+    background: white;
+    color: #db0007;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: .3s;
+}
+
+.hero-btn:hover {
+    background: #111;
+    color: white;
 }
 
 /* ===== NAV ===== */
 nav {
     background: #111;
-    padding: 12px;
+    padding: 14px;
     text-align: center;
     position: sticky;
     top: 0;
@@ -43,15 +61,27 @@ nav a {
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
+    position: relative;
 }
 
-nav a:hover {
-    color: #db0007;
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #db0007;
+    transition: .3s;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 nav button {
     margin-left: 20px;
-    padding: 6px 12px;
+    padding: 7px 14px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -59,9 +89,9 @@ nav button {
 
 /* ===== SECTIONS ===== */
 section {
-    max-width: 900px;
+    max-width: 950px;
     margin: auto;
-    padding: 60px 20px;
+    padding: 80px 20px;
 }
 
 section h2 {
@@ -76,16 +106,24 @@ img {
     border-radius: 14px;
     margin: 25px auto;
     display: block;
+    transition: transform .4s, box-shadow .4s;
+}
+
+img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.18);
 }
 
 /* ===== PLAYER CARDS ===== */
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
-}
-
 .player-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
@@ -104,12 +142,13 @@ img {
 
 .player-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+    box-shadow: 0 0 15px rgba(219,0,7,.6);
 }
 
 .player-rating {
-    background: #e0f0ff;
-    padding: 5px 12px;
+    background: linear-gradient(45deg,#db0007,#ff5a5f);
+    color: white;
+    padding: 5px 14px;
     border-radius: 20px;
     font-weight: bold;
 }
@@ -173,12 +212,26 @@ footer {
 }
 
 .dark .container {
-    background: #1e1e1e;
+    background: rgba(30,30,30,0.85);
 }
 
 .dark .player-card {
     background: #2a2a2a;
     border-left-color: #ff3b3b;
+}
+
+/* ===== TOP BUTTON ===== */
+#topBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 12px 16px;
+    border-radius: 50%;
+    border: none;
+    background: #db0007;
+    color: white;
+    cursor: pointer;
+    display: none;
 }
 </style>
 </head>
@@ -188,6 +241,7 @@ footer {
 <header>
     <h1>Why I Support Arsenal FC ⚽</h1>
     <p>The Pride of North London</p>
+    <a href="#team" class="hero-btn">Explore Arsenal</a>
 </header>
 
 <nav>
@@ -202,29 +256,21 @@ footer {
 
 <section id="about">
     <h2>About Arsenal</h2>
-    <p>
-        Arsenal Football Club is a historic English club founded in 1886. 
-        Known as <strong>The Gunners</strong>, Arsenal are famous for attacking football, 
-        loyal fans, and legendary players.
-    </p>
+    <p>Arsenal Football Club was founded in 1886 and is known as <strong>The Gunners</strong>. The club is famous for attacking football, loyal fans, and legendary players.</p>
 </section>
 
 <section id="team">
     <h2>The Best Team of All Time</h2>
-    <img src="arsenal.jpg" alt="Arsenal Team">
-    <p><strong>Elite Defense:</strong> Saliba and Gabriel form one of the best partnerships in Europe.</p>
-    <p><strong>Set Pieces:</strong> Arsenal are dangerous from corners and free kicks.</p>
-    <p><strong>Tactics:</strong> Arteta adapts systems for every opponent.</p>
-    <p><strong>Youth:</strong> Saka, Rice and Ødegaard lead the future.</p>
+    <img src="arsenal.jpg">
+    <p><strong>Defense:</strong> Saliba & Gabriel dominate.</p>
+    <p><strong>Midfield:</strong> Rice and Ødegaard control games.</p>
+    <p><strong>Attack:</strong> Saka leads the future.</p>
 </section>
 
 <section id="player">
     <h2>Best Player Ever – Thierry Henry</h2>
-    <img src="henry.jpg" alt="Thierry Henry">
-    <p>
-        Thierry Henry is Arsenal’s greatest ever player. His pace, skill, finishing and leadership 
-        made him a legend at the club and one of the best strikers in football history.
-    </p>
+    <img src="henry.jpg">
+    <p>Thierry Henry is Arsenal’s greatest ever player with speed, skill, and legendary finishing.</p>
 </section>
 
 <section id="ratings">
@@ -245,19 +291,16 @@ footer {
 <section id="years">
     <h2>Best Years</h2>
     <ul>
-        <li><strong>2003–04:</strong> The Invincibles season.</li>
-        <li><strong>1997–98:</strong> First Double under Wenger.</li>
-        <li><strong>2001–02:</strong> Second Double season.</li>
+        <li><strong>2003–04:</strong> Invincibles season.</li>
+        <li><strong>1997–98:</strong> First Double.</li>
+        <li><strong>2001–02:</strong> Second Double.</li>
     </ul>
 </section>
 
 <section id="video">
     <h2>Invincibles Highlights 🎥</h2>
     <div class="video-box">
-        <iframe src="https://www.youtube.com/embed/6oR6jX3G9pE"
-        title="Arsenal Invincibles"
-        frameborder="0"
-        allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/6oR6jX3G9pE" allowfullscreen></iframe>
     </div>
 </section>
 
@@ -265,13 +308,14 @@ footer {
     <p>Made by Adib — Arsenal Fan Page ⚽</p>
 </footer>
 
+<button id="topBtn">⬆</button>
+
 <script>
-/* Dark Mode */
-document.getElementById("toggleMode").onclick = () => {
+document.getElementById("toggleMode").onclick = function () {
     document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀ Light" : "🌙 Dark";
 };
 
-/* Player Search */
 document.getElementById("searchPlayer").addEventListener("keyup", function () {
     let filter = this.value.toLowerCase();
     document.querySelectorAll(".player-card").forEach(card => {
@@ -279,7 +323,6 @@ document.getElementById("searchPlayer").addEventListener("keyup", function () {
     });
 });
 
-/* Fade Animation */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add("show");
@@ -290,8 +333,15 @@ document.querySelectorAll("section").forEach(sec => {
     sec.classList.add("fade");
     observer.observe(sec);
 });
+
+window.onscroll = () => {
+    topBtn.style.display = window.scrollY > 400 ? "block" : "none";
+};
+
+topBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
 </script>
 
 </body>
 </html>
-
