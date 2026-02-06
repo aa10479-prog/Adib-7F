@@ -15,7 +15,7 @@ body {
     color: #222;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header {
     background: linear-gradient(to right, #db0007, #8b0004);
     color: white;
@@ -46,7 +46,7 @@ header {
     color: white;
 }
 
-/* ===== NAV ===== */
+/* NAV */
 nav {
     background: #111;
     padding: 14px;
@@ -75,9 +75,7 @@ nav a::after {
     transition: .3s;
 }
 
-nav a:hover::after {
-    width: 100%;
-}
+nav a:hover::after { width: 100%; }
 
 nav button {
     margin-left: 20px;
@@ -87,7 +85,7 @@ nav button {
     cursor: pointer;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 section {
     max-width: 950px;
     margin: auto;
@@ -100,7 +98,7 @@ section h2 {
     padding-bottom: 10px;
 }
 
-/* ===== IMAGES ===== */
+/* IMAGES */
 img {
     max-width: 100%;
     border-radius: 14px;
@@ -114,7 +112,7 @@ img:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
 
-/* ===== CONTAINER ===== */
+/* CONTAINER */
 .container {
     background: rgba(255,255,255,0.85);
     backdrop-filter: blur(8px);
@@ -123,7 +121,7 @@ img:hover {
     box-shadow: 0 10px 25px rgba(0,0,0,.18);
 }
 
-/* ===== PLAYER CARDS ===== */
+/* PLAYERS */
 .player-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
@@ -153,7 +151,7 @@ img:hover {
     font-weight: bold;
 }
 
-/* ===== SEARCH ===== */
+/* SEARCH */
 #searchPlayer {
     padding: 10px;
     width: 100%;
@@ -163,7 +161,7 @@ img:hover {
     border: 1px solid #ccc;
 }
 
-/* ===== VIDEO ===== */
+/* VIDEO */
 .video-box {
     position: relative;
     padding-bottom: 56.25%;
@@ -180,7 +178,37 @@ img:hover {
     height:100%;
 }
 
-/* ===== FOOTER ===== */
+/* GALLERY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 15px;
+}
+
+.gallery img {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* QUIZ */
+.quiz-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+.quiz-box button {
+    margin: 6px;
+    padding: 8px 14px;
+    border: none;
+    background: #db0007;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* FOOTER */
 footer {
     background: #111;
     color: white;
@@ -188,39 +216,17 @@ footer {
     padding: 30px;
 }
 
-/* ===== ANIMATION ===== */
-.fade {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all .8s ease;
-}
+/* ANIMATION */
+.fade { opacity:0; transform:translateY(30px); transition:.8s; }
+.fade.show { opacity:1; transform:translateY(0); }
 
-.fade.show {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* DARK MODE */
+.dark { background:#111; color:#eee; }
+.dark nav, .dark footer { background:#000; }
+.dark .container, .dark .quiz-box { background:#1e1e1e; }
+.dark .player-card { background:#2a2a2a; }
 
-/* ===== DARK MODE ===== */
-.dark {
-    background: #111;
-    color: #eee;
-}
-
-.dark nav,
-.dark footer {
-    background: #000;
-}
-
-.dark .container {
-    background: rgba(30,30,30,0.85);
-}
-
-.dark .player-card {
-    background: #2a2a2a;
-    border-left-color: #ff3b3b;
-}
-
-/* ===== TOP BUTTON ===== */
+/* TOP BTN */
 #topBtn {
     position: fixed;
     bottom: 30px;
@@ -249,98 +255,112 @@ footer {
     <a href="#team">Team</a>
     <a href="#player">Best Player</a>
     <a href="#ratings">Ratings</a>
-    <a href="#years">Best Years</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#quiz">Quiz</a>
     <a href="#video">Video</a>
     <button id="toggleMode">🌙 Dark</button>
 </nav>
 
 <section id="about">
-    <h2>About Arsenal</h2>
-    <p>Arsenal Football Club was founded in 1886 and is known as <strong>The Gunners</strong>. The club is famous for attacking football, loyal fans, and legendary players.</p>
+<h2>About Arsenal</h2>
+<p>Arsenal FC were founded in 1886 and are known as <strong>The Gunners</strong>.</p>
 </section>
 
 <section id="team">
-    <h2>The Best Team of All Time</h2>
-    <img src="arsenal.jpg">
-    <p><strong>Defense:</strong> Saliba & Gabriel dominate.</p>
-    <p><strong>Midfield:</strong> Rice and Ødegaard control games.</p>
-    <p><strong>Attack:</strong> Saka leads the future.</p>
+<h2>The Best Team</h2>
+<img src="https://i.imgur.com/QJ4GZQp.jpg">
+<p>Led by Saka, Rice and Ødegaard.</p>
 </section>
 
 <section id="player">
-    <h2>Best Player Ever – Thierry Henry</h2>
-    <img src="henry.jpg">
-    <p>Thierry Henry is Arsenal’s greatest ever player with speed, skill, and legendary finishing.</p>
+<h2>Best Player – Thierry Henry</h2>
+<img src="https://i.imgur.com/nQp9Qzq.jpg">
+<p>Henry is Arsenal’s all-time legend.</p>
 </section>
 
 <section id="ratings">
-    <h2>Top Player Ratings</h2>
-    <input type="text" id="searchPlayer" placeholder="Search player...">
-    <div class="container">
-        <div class="player-list">
-            <div class="player-card"><span>Saka</span><span class="player-rating">7.45</span></div>
-            <div class="player-card"><span>Partey</span><span class="player-rating">7.38</span></div>
-            <div class="player-card"><span>Rice</span><span class="player-rating">7.34</span></div>
-            <div class="player-card"><span>Ødegaard</span><span class="player-rating">7.23</span></div>
-            <div class="player-card"><span>Raya</span><span class="player-rating">7.21</span></div>
-            <div class="player-card"><span>Gabriel</span><span class="player-rating">7.21</span></div>
-        </div>
-    </div>
+<h2>Top Player Ratings</h2>
+<input id="searchPlayer" placeholder="Search player...">
+<div class="container">
+<div class="player-list">
+<div class="player-card"><span>Saka</span><span class="player-rating">7.45</span></div>
+<div class="player-card"><span>Rice</span><span class="player-rating">7.34</span></div>
+<div class="player-card"><span>Ødegaard</span><span class="player-rating">7.23</span></div>
+</div>
+</div>
 </section>
 
-<section id="years">
-    <h2>Best Years</h2>
-    <ul>
-        <li><strong>2003–04:</strong> Invincibles season.</li>
-        <li><strong>1997–98:</strong> First Double.</li>
-        <li><strong>2001–02:</strong> Second Double.</li>
-    </ul>
+<section id="gallery">
+<h2>Arsenal Gallery 🖼</h2>
+<div class="gallery">
+<img src="https://i.imgur.com/QJ4GZQp.jpg">
+<img src="https://i.imgur.com/nQp9Qzq.jpg">
+<img src="https://i.imgur.com/1u7qJYJ.jpg">
+<img src="https://i.imgur.com/wzKZKxT.jpg">
+</div>
+</section>
+
+<section id="quiz">
+<h2>Arsenal Quiz 🧠</h2>
+<div class="quiz-box">
+<p id="question"></p>
+<div id="answers"></div>
+<p id="result"></p>
+</div>
 </section>
 
 <section id="video">
-    <h2>Invincibles Highlights 🎥</h2>
-    <div class="video-box">
-        <iframe src="https://www.youtube.com/embed/6oR6jX3G9pE" allowfullscreen></iframe>
-    </div>
+<h2>Invincibles Highlights 🎥</h2>
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/6oR6jX3G9pE" allowfullscreen></iframe>
+</div>
 </section>
 
 <footer>
-    <p>Made by Adib — Arsenal Fan Page ⚽</p>
+<p>Made by Adib ⚽</p>
 </footer>
 
 <button id="topBtn">⬆</button>
 
 <script>
-document.getElementById("toggleMode").onclick = function () {
-    document.body.classList.toggle("dark");
-    this.textContent = document.body.classList.contains("dark") ? "☀ Light" : "🌙 Dark";
+toggleMode.onclick=function(){
+document.body.classList.toggle("dark");
+this.textContent=document.body.classList.contains("dark")?"☀ Light":"🌙 Dark";
 };
 
-document.getElementById("searchPlayer").addEventListener("keyup", function () {
-    let filter = this.value.toLowerCase();
-    document.querySelectorAll(".player-card").forEach(card => {
-        card.style.display = card.innerText.toLowerCase().includes(filter) ? "flex" : "none";
-    });
+searchPlayer.onkeyup=function(){
+let f=this.value.toLowerCase();
+document.querySelectorAll(".player-card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(f)?"flex":"none";
 });
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("show");
-    });
-});
-
-document.querySelectorAll("section").forEach(sec => {
-    sec.classList.add("fade");
-    observer.observe(sec);
-});
-
-window.onscroll = () => {
-    topBtn.style.display = window.scrollY > 400 ? "block" : "none";
 };
 
-topBtn.onclick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-};
+const quizData=[
+{q:"Arsenal top scorer?",a:["Henry","Bergkamp","Saka"],c:0},
+{q:"Founded year?",a:["1886","1900","1922"],c:0},
+{q:"Nickname?",a:["Reds","Gunners","Kings"],c:1}
+];
+
+let i=0;
+function loadQuiz(){
+question.textContent=quizData[i].q;
+answers.innerHTML="";
+result.textContent="";
+quizData[i].a.forEach((x,n)=>{
+let b=document.createElement("button");
+b.textContent=x;
+b.onclick=()=>check(n);
+answers.appendChild(b);
+});
+}
+function check(n){
+result.textContent=n===quizData[i].c?"✅ Correct!":"❌ Try again!";
+if(n===quizData[i].c){i=(i+1)%quizData.length;setTimeout(loadQuiz,800);}
+}
+loadQuiz();
+
+onscroll=()=>topBtn.style.display=scrollY>300?"block":"none";
+topBtn.onclick=()=>scrollTo({top:0,behavior:"smooth"});
 </script>
 
 </body>
